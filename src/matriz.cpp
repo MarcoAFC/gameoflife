@@ -10,8 +10,8 @@ void copiarMat(std::vector<std::vector<int>> &mat, std::vector<std::vector<int>>
         }
     }
 }
+//iniciando os valores da borda da matriz com 3
 void iniciarBorda(int nlinhas, int ncol, std::vector<std::vector<int>> &mat){
-    //iniciando os valores da borda com 3
     for(int i = 0;i < 2; ++i)
     {
         for(int j = 0;j < ncol; ++j)
@@ -42,6 +42,8 @@ void iniciarBorda(int nlinhas, int ncol, std::vector<std::vector<int>> &mat){
     }
 
 }
+
+//printa a matriz no console com os valores interpretados pelo progama
 void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat){
     for(int i = 0;i < nlinhas; ++i)
     {
@@ -51,4 +53,25 @@ void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat){
         }
         std::cout << "\n";
     }
+}
+
+//printa a matriz em um .txt, chamado output, com os valores para interpretação visual do usuário
+void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat, std::ofstream &myfile, int geracao){
+    myfile << "Generation " << geracao << std::endl;
+    for(int i = 2;i < nlinhas - 2; ++i)
+    {
+        myfile << "[";
+        for (int j = 2;j < ncol - 2; ++j)
+        {
+            if (mat[i][j] == 0){
+                myfile << " ";
+            }
+            else if(mat[i][j] == 1){
+                myfile << "*";
+            }
+        }
+        myfile << "]";
+        myfile << std::endl;
+    }
+    myfile.close();
 }

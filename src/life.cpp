@@ -64,6 +64,7 @@
             }
         }
     }
+    //guarda a localização dos vizinhos em um mapa secundário
     void Life::guardar_vizinhos(std::vector<std::vector<int>> &mat,std::vector<std::vector<int>> &mat2, std::multimap <int, int> &map,std::multimap <int, int> &map2){
         map2.clear();
         for(auto p5 : map){
@@ -79,6 +80,7 @@
             std::cout << p.first << ", " << p.second << "\n";
         }*/
     }
+    //função que para o loop de eventos de acordo com as condições de parada
     int Life::pararExec(std::vector<std::string> &chave, int ligado){
         //primeira geração para abrir o vetor
         if (hash == "a"){
