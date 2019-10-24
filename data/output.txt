@@ -1,4 +1,4 @@
-Geracao 0
+Generation 0
 [          ]
 [          ]
 [   *** *  ]
@@ -9,7 +9,7 @@ Geracao 0
 [   *   *  ]
 [          ]
 [          ]
-Geracao 1
+Generation 1
 [          ]
 [    *     ]
 [   **     ]
@@ -20,7 +20,7 @@ Geracao 1
 [          ]
 [          ]
 [          ]
-Geracao 2
+Generation 2
 [          ]
 [   **     ]
 [  * *     ]
@@ -31,7 +31,7 @@ Geracao 2
 [          ]
 [          ]
 [          ]
-Geracao 3
+Generation 3
 [          ]
 [   **     ]
 [  *  *    ]
@@ -42,7 +42,7 @@ Geracao 3
 [          ]
 [          ]
 [          ]
-Geracao 4
+Generation 4
 [          ]
 [   **     ]
 [  *  *    ]
