@@ -2,7 +2,8 @@
 #include "../include/life.h"
 #include "../include/matriz.h"
 #include <fstream>
-
+#include "../include/canvas.h"
+#include <string>
 int main()
 {
     int nlinhas, ncol;
@@ -18,6 +19,10 @@ int main()
     std::multimap <int, int> vivosVizinhos;
     
     //Criação das matrizes
+    Color green(0,255,0);
+    Color red(255,0,0);
+    Block deadBlock(20, green);
+    
     std::vector<std::vector<int>> mat;
     mat.resize(nlinhas, std::vector<int>(ncol));
     std::vector<std::vector<int>> mat2;
@@ -60,7 +65,8 @@ int main()
     Life* jogo = new Life();
 
     while (ligado == 1){
-        geracao ++;
+        Board board(deadBlock, ncol-4, nlinhas-4);
+        geracao++;
         jogo->set_alive(mat, nlinhas, ncol,vivos);
         jogo->contar_vizinho(mat, mat2,vivos);
         jogo->guardar_vizinhos(mat,mat2,vivos, vivosVizinhos);
@@ -68,6 +74,11 @@ int main()
         copiarMat(mat, mat2, nlinhas, ncol);
         std::cout << "\n";
         ligado = jogo->pararExec(chave, ligado);
+        for(std::pair<int,int> vivo : vivos){
+            board.setBlockColor(vivo.first-2, vivo.second-2, red);
+        }
+        std::string filename = "../data/generation_"+std::to_string(geracao)+".ppm";
+        board.printBoard(filename);
         if (ligado == 1){
             myfile.open (std::string("../data/output.txt"), std::ios::app);
             printMat(nlinhas, ncol, mat, myfile, geracao);
