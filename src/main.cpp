@@ -7,6 +7,8 @@
 int main()
 {
     int nlinhas, ncol;
+    //entrada do arquivo
+
     int ligado = 1;
     int geracao = 0;
     std::ofstream myfile;
@@ -15,7 +17,7 @@ int main()
     ncol = 10 + 4;
 
     //mapas para armazenamento de pontos
-    std::multimap <int, int> vivos;
+    std::multimap <int, int> vivos = readInputFile("../input/input.txt", nlinhas, ncol);
     std::multimap <int, int> vivosVizinhos;
     
     //Criação das matrizes
@@ -35,7 +37,7 @@ int main()
     {
         for(int j = 0;j < ncol; ++j)
         {
-            mat[i][j] = 0;
+            mat[i][j] = 0;       
         }
     }
 
@@ -43,17 +45,9 @@ int main()
     
 
     //determina que aguns pontos da matriz serão um (implementado apenas para teste)
-    mat[5][5] = 1;
-    mat[5][2] = 1;
-    mat[6][5] = 1;
-    mat[4][5] = 1;
-    mat[9][5] = 1;
-    mat[4][6] = 1;
-    mat[4][7] = 1;
-    mat[4][9] = 1;
-    mat[9][9] = 1;
-    mat[4][9] = 1;
-
+    for(std::pair<int,int> p : vivos){
+        mat[p.first][p.second] = 1;
+    }
 
     copiarMat(mat2, mat, nlinhas, ncol);
 

@@ -75,3 +75,34 @@ void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat, std::ofs
     }
     myfile.close();
 }
+
+std::multimap<int,int> readInputFile(std::string filename, int& nlin, int& ncol){
+    std::ifstream input(filename);
+    std::string line;
+    std::multimap<int, int> alive;
+    char marker;
+    int i{0};
+    if(input.is_open()){
+        std::getline(input, line);
+        std::istringstream linCol(line);
+        linCol >> nlin >> ncol;
+        nlin+=4;
+        ncol+=4;
+        std::getline(input, line);
+        marker = line.at(0);
+        while(std::getline(input, line) && (i < ncol)){
+            int j{0};
+            for(char& c : line){
+                if(c == marker && j < ncol){
+                    alive.insert(std::pair<int,int>(i+2,j+2));
+                }
+                j++;
+            }
+            i++;
+        }
+        return alive;
+    }
+    else{
+        std::cout<<"UNABLE TO OPEN FILE, USER HAS PERMISSION?\n";
+    }
+}
