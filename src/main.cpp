@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
     int maxGen = -1;
     int fps = 60;
     bool img =false;
+    int blocksize = 5;
     
     Color green(0,255,0);
     Color red(255,0,0);
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     std::string cor;
     std::ofstream myfile;
 
-if(argc > 10){
+if(argc > 18){
         std::cout<<"Too many arguments, please refer to the following argument usage:\n\n";
         std::cout<< "--help -> Print this help text.\n";
         std::cout<< "--path -> Specifies the input file";
@@ -49,6 +50,7 @@ if(argc > 10){
         std::cout<< "--maxgen <num> -> Maximum number of generations to simulate.\n";
         std::cout<< "--fps <num> -> Number of generations presented per second.\n";
         std::cout<< "--bkgcolor <color> -> Color name for the background. Default GREEN.\n";
+        std::cout<< "--blocksize <num> -> Pixel size of a cell. Default = 5.\n";
         std::cout<< "--alivecolor <color> -> Color name for representing alive cells. Default RED.\n";
         std::cout<< "--outfile <filename> -> Write the text representation of the simulation ";
         std::cout<< "to the given filename.:\n";
@@ -68,6 +70,7 @@ if(argc > 10){
             if (str == "--path"|| str == "-path"){
                 if (i+1 == argc){
                     std::cout<<"Please insert the path!\n";
+                    ligado = 0;
                 }
                 else{
                     path = argv[++i];
@@ -77,11 +80,13 @@ if(argc > 10){
                 }
                 catch( const std::invalid_argument& e ){
                     std::cout<<"Invalid path!\n";
+                    ligado =0;
                 }
             }
             if (str == "--imgdir"|| str == "-imgdir"){
                 if (i+1 == argc){
                     std::cout<<"Please insert the path for the imgdir!\n";
+                    ligado = 0;
                 }
                 else{
                     imgdir = argv[++i];
@@ -91,6 +96,7 @@ if(argc > 10){
             else if (str == "--maxgen" || str == "-maxgen"){
                 if (i+1 == argc){
                     std::cout<<"Please insert the corresponding number of max generetions!\n";
+                    ligado =0;
                 }
                 try {
                     maxGen = std::stoi( argv[++i] );
@@ -107,6 +113,7 @@ if(argc > 10){
             else if (str == "--fps" || str == "-fps"){
                 if (i+1 == argc){
                     std::cout<<"Please insert the corresponding number of FPS!\n";
+                    ligado = 0;
                 }
                 try {
                     fps = std::stoi( argv[++i] );
@@ -122,6 +129,7 @@ if(argc > 10){
             else if (str == "--outfile" || str == "-outfile"){
                 if (i+1 == argc){
                     std::cout<<"Please insert the corresponding name for the outfile!\n";
+                    ligado = 0;
                 }
                 else{
                     outfile = argv[++i];
@@ -232,19 +240,37 @@ if(argc > 10){
                 }
             }
             else if(str == "-help" || str == "--help"){
-        std::cout<< "--help -> Print this help text.\n";
-        std::cout<< "--path -> Specifies the input file";
-        std::cout<< "--imgdir <path> -> Specify directory where output images are written to.\n";
-        std::cout<< "--maxgen <num> -> Maximum number of generations to simulate.\n";
-        std::cout<< "--fps <num> -> Number of generations presented per second.\n";
-        std::cout<< "--bkgcolor <color> -> Color name for the background. Default GREEN.\n";
-        std::cout<< "--alivecolor <color> -> Color name for representing alive cells. Default RED.\n";
-        std::cout<< "--outfile <filename> -> Write the text representation of the simulation ";
-        std::cout<< "to the given filename.:\n\n";
-        std::cout<< "Available colors are:\n";
-        std::cout<< "BLACK BLUE CRIMSON DARK_GREEN DEEP_SKY_BLUE DODGER_BLUE \n";
-        std::cout<< "GREEN LIGHT_BLUE LIGHT_GREY LIGHT_YELLOW RED STEEL_BLUE \n";
-        std::cout<< "WHITE YELLOW\n\n";
+                std::cout<< "--help -> Print this help text.\n";
+                std::cout<< "--path -> Specifies the input file";
+                std::cout<< "--imgdir <path> -> Specify directory where output images are written to.\n";
+                std::cout<< "--maxgen <num> -> Maximum number of generations to simulate.\n";
+                std::cout<< "--fps <num> -> Number of generations presented per second.\n";
+                std::cout<< "--bkgcolor <color> -> Color name for the background. Default GREEN.\n";
+                std::cout<< "--blocksize <num> -> Pixel size of a cell. Default = 5.\n";
+                std::cout<< "--alivecolor <color> -> Color name for representing alive cells. Default RED.\n";
+                std::cout<< "--outfile <filename> -> Write the text representation of the simulation ";
+                std::cout<< "to the given filename.:\n\n";
+                std::cout<< "Available colors are:\n";
+                std::cout<< "BLACK BLUE CRIMSON DARK_GREEN DEEP_SKY_BLUE DODGER_BLUE \n";
+                std::cout<< "GREEN LIGHT_BLUE LIGHT_GREY LIGHT_YELLOW RED STEEL_BLUE \n";
+                std::cout<< "WHITE YELLOW\n\n";
+            }
+            else if (str == "--blocksize" || str == "-blocksize"){
+                if (i+1 == argc){
+                    std::cout<<"Please insert the corresponding number of block size!\n";
+                    ligado =0;
+                }
+                try {
+                    blocksize = std::stoi( argv[++i] );
+                }
+                catch( const std::invalid_argument& e ){
+                    std::cout<<"Invalid value for block size!\n";
+                    ligado = 0;
+                }
+                if (blocksize < 1){
+                    std::cout<<"Number of block size is to low!\n";
+                    ligado = 0;
+                }
             }
         }    
     }
@@ -259,7 +285,7 @@ if(argc > 10){
     
     //Criação das matrizes
 
-    Block deadBlock(20, bkgcolor);
+    Block deadBlock(blocksize, bkgcolor);
     
     std::vector<std::vector<int>> mat;
     mat.resize(nlinhas, std::vector<int>(ncol));
