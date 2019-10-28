@@ -103,6 +103,6 @@ std::multimap<int,int> readInputFile(std::string filename, int& nlin, int& ncol)
         return alive;
     }
     else{
-        std::cout<<"UNABLE TO OPEN FILE, USER HAS PERMISSION?\n";
+        std::cout<<"UNABLE TO OPEN FILE!\n";
     }
 }

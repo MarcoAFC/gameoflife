@@ -81,8 +81,11 @@
         }*/
     }
     //função que para o loop de eventos de acordo com as condições de parada
-    int Life::pararExec(std::vector<std::string> &chave, int ligado){
+    int Life::pararExec(std::vector<std::string> &chave, int ligado, int maxGen, int geracao){
         //primeira geração para abrir o vetor
+        if (maxGen == geracao){
+            return 0;
+        }
         if (hash == "a"){
             return 0;
         }
