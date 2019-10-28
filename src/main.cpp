@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     std::string cor;
     std::ofstream myfile;
 
-if(argc > 18){
+if(argc > 14){
         std::cout<<"Too many arguments, please refer to the following argument usage:\n\n";
         std::cout<< "--help -> Print this help text.\n";
         std::cout<< "--path -> Specifies the input file";
