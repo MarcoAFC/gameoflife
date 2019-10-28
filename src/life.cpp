@@ -1,8 +1,10 @@
 #include "../include/life.h"
+#include "../include/matriz.h"
 
     void Life::set_alive(std::vector<std::vector<int>> &mat, int nlinhas, int ncol,std::multimap <int, int> &map){
         hash = "a";
         map.clear();
+        //iniciarBorda(nlinhas, ncol, mat);
         for(int i = 2;i < nlinhas - 2; ++i)
         {
             for (int j = 2;j < ncol - 2; ++j)

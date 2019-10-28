@@ -277,13 +277,12 @@ if(argc > 10){
         }
     }
 
-    iniciarBorda(nlinhas, ncol, mat);
-    
-
     //determina que aguns pontos da matriz serão um
     for(std::pair<int,int> p : vivos){
         mat[p.first][p.second] = 1;
     }
+
+    iniciarBorda(nlinhas, ncol, mat);
 
     copiarMat(mat2, mat, nlinhas, ncol);
 
