@@ -2,6 +2,13 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+    /*!
+     * Class to store a color variable in RGB format.
+     * \param red the value of red from 0 to 255.
+     * \param green the value of green from 0 to 255.
+     * \param blue the value of blue from 0 to 255.
+     */
+
 class Color{
     private:
         int rgba[3];
@@ -47,6 +54,12 @@ class Color{
             return this->rgba[2];
         }
 };
+    /*!
+     * Class to store a pixel block with variable size.
+     * \param w the width dimension of the block.
+     * \param h the heigth dimension of the block. If not given, is set to be equal to w.
+     * \param color a color object to set the color of the block.
+     */
 
 class Block{
     private:
@@ -100,6 +113,13 @@ class Block{
         }
 };
 
+    /*!
+     * Class to store and implement functions related to the entire board.
+     * \param block a default block that will also be used to represent dead cells.
+     * \param wBlockCount the ammount of blocks that will be fit in the width dimension.
+     * \param hBlockCount the ammount of blocks that will be fit in the heigth dimension.
+     */
+
 class Board{
     private:
         int w;
@@ -117,9 +137,21 @@ class Board{
                 }   
             }
         }
+        /*!
+        * Member function that sets the color of a block to a Color object input.
+        * \param w the position of the block in the width dimension.
+        * \param h the position of the block in the heigth dimension.
+        * \param color the color to be set.
+        */
         void setBlockColor(int posW, int posH, Color color){
             blockArray[posW][posH].setColor(color);
         }
+        /*!
+        * Member function that prints the board to a ppm file according to filename received.
+        * \param w the position of the block in the width dimension.
+        * \param h the position of the block in the heigth dimension.
+        * \param color the color to be set.filename a string containing the name and directory to save the file.
+        */
         bool printBoard(std::string & filename){
             std::ofstream file(filename, std::ios::out);
             if(not file.is_open()){
