@@ -19,8 +19,8 @@
    
 ## Usage
   ##TODO
-  To download and use this program, please clone the repository to your environment, then open the terminal in the corresponding file and use the command **Make**.\
-  Afterwards bash the executable file with **./life** [<*options*>] --path **<input_file>**, where:\
+  To download and use this program, please clone the repository to your environment, then open the terminal in the corresponding folder and use g++ src/main.cpp src/matriz.cpp src/life.cpp.\
+  Afterwards bash the executable file with **./a.out** [<*options*>] --path **<input_file>**, where:\
     **Facultative parameters:**\
       - --help:\
         Prints a text detailing the options possible for usage.\
