@@ -5,7 +5,7 @@
  - [Leonardo Nammur](github.com/Nammur)
 ## About the project
 
-  This is an exercise project made for the course DIM0120 and has the objective of implent a [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) generator. The game of life is a cellular automaton in which, given a initial setting for the system, several "alive" cells are placed in the board, and the remaining space of the board is filled with dead cells the board's content is iterated according to a given set of rules, through which any given cell can remain alive, die, or be born if certain criteria are met. The classic rules are:
+  This is an exercise project made for the course DIM0120 and has the objective of implement a [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) generator. The game of life is a cellular automaton in which, given a initial setting for the system, several "alive" cells are placed in the board, and the remaining space of the board is filled with dead cells the board's content is iterated according to a given set of rules, through which any given cell can remain alive, die, or be born if certain criteria are met. The classic rules are:
     - Any live cell with fewer than 2 neighbours dies of solitude.
     - Any live cell with two or three live neighbours stays alive.
     - Any live cell with more than three live neighbours suffocates and dies.
