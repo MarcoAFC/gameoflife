@@ -1,6 +1,12 @@
 #include "../include/matriz.h"
 
-//faz uma cópia d euma matriz para a outra
+    /*!
+    * A function that copies a matrix to another.
+    * \param mat the matrix receiving the copy.
+    * \param mat2 the matrix being copied.
+    * \param nlinhas the number of lines in the matrix.
+    * \param ncol the number of columns in the matrix.
+    */
 void copiarMat(std::vector<std::vector<int>> &mat, std::vector<std::vector<int>> &mat2, int nlinhas, int ncol){
     for(int i = 0;i < nlinhas; ++i)
     {
@@ -10,7 +16,12 @@ void copiarMat(std::vector<std::vector<int>> &mat, std::vector<std::vector<int>>
         }
     }
 }
-//iniciando os valores da borda da matriz com 3
+    /*!
+    * Fills the buffer zone of the matrix with the number 3 to avoid errors in counting.
+    * \param nlin the number of lines in the matrix.
+    * \param ncol the number of columns in the matrix.
+    * \param mat the matrix representing the board.
+    */
 void iniciarBorda(int nlinhas, int ncol, std::vector<std::vector<int>> &mat){
     for(int i = 0;i < 2; ++i)
     {
@@ -43,7 +54,12 @@ void iniciarBorda(int nlinhas, int ncol, std::vector<std::vector<int>> &mat){
 
 }
 
-//printa a matriz no console com os valores interpretados pelo progama
+    /*!
+    * A function that prints the matrix to the terminal
+    * \param nlin the number of lines in the matrix.
+    * \param ncol the number of columns in the matrix.
+    * \param mat the matrix representing the board.
+    */
 void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat){
     for(int i = 0;i < nlinhas; ++i)
     {
@@ -55,7 +71,14 @@ void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat){
     }
 }
 
-//printa a matriz em um .txt, chamado output, com os valores para interpretação visual do usuário
+    /*!
+    * A function that prints the matrix to a given file.
+    * \param nlin the number of lines in the matrix.
+    * \param ncol the number of columns in the matrix.
+    * \param mat the matrix representing the board.
+    * \param myfile the path to the file.
+    * \param geracao the number of iterations.
+    */
 void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat, std::ofstream &myfile, int geracao){
     myfile << "Generation " << geracao << std::endl;
     for(int i = 2;i < nlinhas - 2; ++i)
@@ -75,7 +98,12 @@ void printMat(int nlinhas, int ncol,std::vector<std::vector<int>> &mat, std::ofs
     }
     myfile.close();
 }
-
+    /*!
+    * A function that takes a file and generates a map with the position of the live cells.
+    * \param filename the path to the file.
+    * \param nlin the number of lines in the matrix, read from the file and stored in this variable.
+    * \param ncol the number of columns in the matrix, read from the file and stored in this variable.
+    */
 std::multimap<int,int> readInputFile(std::string filename, int& nlin, int& ncol){
     std::ifstream input(filename);
     std::string line;
